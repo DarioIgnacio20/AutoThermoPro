@@ -1,0 +1,23 @@
+# Bloque 1
+[seguridad1]
+titulo=Despacho Rápido y Seguro por Bluexpress de Copec
+imagen=Imagenes/seguridadcompra/Bluexpress.png
+visible=true
+
+# Bloque 2
+[seguridad2]
+titulo=Paga al Recibir, Evita Estafas
+imagen=Imagenes/seguridadcompra/Paga al Recibir.png
+visible=true
+
+# Bloque 3
+[seguridad3]
+titulo=Garantía de Satisfacción
+imagen=Imagenes/seguridadcompra/Garantia.png
+visible=true
+
+# Bloque 4 (opcional)
+#[seguridad4]
+#titulo=Te llega entre 2 y 5 días
+#imagen=Imagenes/seguridadcompra/Envio Rapido.png
+#visible=true

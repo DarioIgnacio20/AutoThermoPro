@@ -1,0 +1,19 @@
+[beneficio1]
+gif=Imagenes/gif/gif1.gif
+titulo=Mantén la temperatura ideal todo el invierno ❄️
+texto=Con su potente calefacción, el AutoThermoPro es perfecto para mantener tu auto cálido durante los fríos días de invierno. ¡Adiós al frío!
+
+[beneficio2]
+gif=Imagenes/gif/gif2.gif
+titulo=Diseño moderno y funcional 💼
+texto=Su diseño elegante y compacto no solo es práctico, sino que también se ve genial en cualquier vehículo.
+
+[beneficio3]
+gif=Imagenes/gif/gif3.gif
+titulo=Enfriamiento rápido 🌬️ (beneficio extra)
+texto=Aunque es ideal para el invierno, el AutoThermoPro también tiene la opción de enfriar rápidamente el coche en los días más calurosos. ¡Un producto para todo el año!
+
+[beneficio4]
+gif=Imagenes/gif/gif4.gif
+titulo=Control total 🔧
+texto=Elige la temperatura que más te convenga fio o calor tu decides. ¡Comodidad y control al instante!

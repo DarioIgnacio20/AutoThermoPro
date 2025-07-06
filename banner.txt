@@ -1,0 +1,8 @@
+texto=🚚 Envío gratis por pedidos sobre $19.990 | 💳 Paga al recibir en todo Chile | ✅ Garantía completa de 30 días
+velocidad=30s
+colorFondo=#f61d1d
+colorTexto=#ffffff
+tamano=30px
+fuente=Arial, sans-serif
+ancho=100%
+alto=50px

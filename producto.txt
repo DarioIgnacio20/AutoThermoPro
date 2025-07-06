@@ -1,0 +1,112 @@
+titulo=🔥 AutoThermoPro ¡Adiós al frío extremo en tu auto!
+descripcion_compra=
+estrellas=4.8
+reseñas=256
+precio_1=20990
+precio_anterior_1=29990
+descuento_1=7
+cantidad_1=1
+
+precio_2=32990
+precio_anterior_2=40990
+descuento_2=10
+cantidad_2=2
+
+precio_3=35990
+precio_anterior_3=60990
+descuento_3=15
+cantidad_3=3
+
+# Estilo título
+titulo_colorTexto=#e74c3c
+titulo_tamano=32px
+titulo_fuente='Arial Black'
+titulo_negrita=true
+titulo_cursiva=false
+
+# Estilo reseñas
+reseñas_colorTexto=#f39c12
+reseñas_tamano=18px
+reseñas_fuente='Verdana'
+reseñas_negrita=false
+reseñas_cursiva=false
+
+# Estilo personas viendo
+personas_colorTexto=#00bcd4
+personas_tamano=16px
+personas_fuente='Tahoma'
+personas_negrita=false
+personas_cursiva=true
+
+# Estilo precio actual
+precio_colorTexto=#27ae60
+precio_tamano=30px
+precio_fuente='Impact'
+precio_negrita=true
+
+# Estilo precio anterior
+precioAnt_colorTexto=#888
+precioAnt_tamano=30px
+precioAnt_negrita=false
+precioAnt_cursiva=true
+
+# Estilo descuento
+descuento_colorTexto=#e74c3c
+descuento_tamano=18px
+descuento_negrita=true
+
+# Estilo cantidad
+cantidad_colorTexto=#000
+cantidad_tamano=16px
+
+
+# Botón comprar
+boton_comprar_texto=🛒 Lo Quiero Ahora !
+boton_comprar_colorFondo=#e60000
+boton_comprar_colorTexto=#ffffff
+boton_comprar_tamano=16px
+boton_comprar_fuente='Arial'
+boton_comprar_negrita=true
+boton_comprar_radio=8px
+boton_comprar_padding=12px
+boton_comprar_marginTop=20px
+boton_comprar_visible=true
+
+
+# Personalización de textos visibles
+texto_reseñas=Testimonios
+texto_stock=🔥 Solo {cantidad} unidades en stock!
+texto_cantidad_boton_1= Lleva 1
+texto_cantidad_boton_2= Lleva 2
+texto_cantidad_boton_3= Lleva 3
+texto_ahorro= Estarás Ahorrando {porcentaje}%
+texto_personas={cantidad} personas están viendo este producto ahora
+texto_cantidad_mensaje=Cantidad: {cantidad} Producto
+
+# Control de visibilidad
+mostrar_boton_cantidad_1=true
+mostrar_boton_cantidad_2=true
+mostrar_boton_cantidad_3=false
+
+mostrar_texto_ahorro=true
+mostrar_texto_cantidad=false
+mostrar_texto_personas=true
+mostrar_texto_stock=true
+
+
+
+# Sección ventajas
+ventaja_1_texto= Función de calefacción potente 🔥 - Ideal para mantener tu coche a la temperatura perfecta durante los días fríos de invierno
+ventaja_1_visible=true
+
+ventaja_2_texto=✨ Producto exclusivo – No lo encontrarás en tiendas físicas
+ventaja_2_visible=true
+
+# Estilo ventajas
+ventaja_colorTexto=#e74c3c
+ventaja_tamano=13px
+ventaja_fuente='Arial'
+ventaja_negrita=true
+ventaja_cursiva=false
+ventaja_marginTop=8px
+ventaja_marginBottom=8px

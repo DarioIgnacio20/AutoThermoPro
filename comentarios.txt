@@ -1,0 +1,48 @@
+[comentario1]
+nombre=Laura
+estrellas=5
+fecha=2025-Jun-10
+titulo=¡Lo mejor para el frío!
+texto=Lo compré para los días fríos y ha sido una maravilla. En minutos el auto está calentito, ideal para esas mañanas heladas en Santiago. ¡Lo recomiendo mucho!
+imagenes=Imagenes/Comentarios/Comentario1/img1.jpg,Imagenes/Comentarios/Comentario1/img2.jpg,Imagenes/Comentarios/Comentario1/img3.jpg
+
+[comentario2]
+nombre=Carlos
+estrellas=5
+fecha=2025-Jun-03
+titulo=Super práctico
+texto=Lo uso todos los días en el invierno. Entra perfecto en el auto y calienta rápido. Además, no gasta tanta batería, lo que es un plus. ¡Me salvó de los fríos mañaneros!
+imagenes=Imagenes/Comentarios/Comentario2/img1.jpg,Imagenes/Comentarios/Comentario2/img2.jpg,Imagenes/Comentarios/Comentario2/img3.jpg
+
+[comentario3]
+nombre=Alejandra
+estrellas=4
+fecha=2025-May-25
+titulo=Increíble para los días de frío
+texto=Nunca más pasé frío en el auto. Este calefactor es ideal para los días más helados. Además, el diseño es súper bonito y no ocupa mucho espacio. 100% recomendado.
+imagenes=Imagenes/Comentarios/Comentario3/img1.jpg,Imagenes/Comentarios/Comentario3/img2.jpg,Imagenes/Comentarios/Comentario3/img3.jpg
+
+[comentario4]
+nombre=Diego
+estrellas=5
+fecha=2025-May-15
+titulo=¡Súper eficiente!
+texto=Lo usé durante todo el invierno y realmente funciona bien. Es súper fácil de usar, solo lo enchufas y listo. Lo tengo siempre en el auto.
+imagenes=Imagenes/Comentarios/Comentario4/img1.jpg,Imagenes/Comentarios/Comentario4/img2.jpg,Imagenes/Comentarios/Comentario4/img3.jpg
+
+[comentario5]
+nombre=Natalia
+estrellas=5
+fecha=2025-May-30
+titulo=Práctico y eficaz
+texto=Ideal para mantener el auto calentito en esos días helados de la mañana. Además, es bien portátil, lo puedo mover a cualquier lado del auto según lo necesite.
+imagenes=Imagenes/Comentarios/Comentario5/img1.jpg,Imagenes/Comentarios/Comentario5/img2.jpg,Imagenes/Comentarios/Comentario5/img3.jpg
+
+[comentario7]
+nombre=Javier
+estrellas=4
+fecha=2025-May-18
+titulo=Imprescindible para el invierno
+texto=Lo compré pensando solo en calefacción, pero me sorprende lo rápido que calienta. Perfecto para los viajes largos o las mañanas congeladas. Me tiene muy conforme.
+imagenes=Imagenes/Comentarios/Comentario7/img1.jpg,Imagenes/Comentarios/Comentario7/img2.jpg,Imagenes/Comentarios/Comentario7/img3.jpg
+

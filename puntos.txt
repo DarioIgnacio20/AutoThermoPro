@@ -1,0 +1,14 @@
+[beneficio1]
+icono=🛠️
+titulo=Fácil de instalar 
+texto=No necesitas ser un experto para disfrutar del AutoThermoPro. Instálalo rápidamente en el tablero y úsalo donde más lo necesites
+
+[beneficio2]
+icono=🚙
+titulo=Portátil y flexible
+texto=Puedes moverlo a cualquier parte de tu vehículo o quitarlo cuando no lo necesites. ¡La comodidad siempre al alcance de tu mano!
+
+[beneficio3]
+icono=💡
+titulo=Ahorro de energía
+texto=Disfruta de una solución eficiente que no sobrecarga la batería de tu auto. Ideal para quienes buscan una opción económica y funcional
