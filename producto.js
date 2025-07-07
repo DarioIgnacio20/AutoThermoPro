@@ -34,11 +34,11 @@ function renderPersonasViendo(config) {
 
   // Avatares de ejemplo, cámbialos si quieres
   const avatares = [
-    'imagenes/Avatar/img_avatar1.jpg',
-    'imagenes/Avatar/img_avatar2.jpg',
-    'imagenes/Avatar/img_avatar3.jpg',
-    'imagenes/Avatar/img_avatar4.jpg',
-    'imagenes/Avatar/img_avatar5.jpg'
+    'Imagenes/Avatar/img_avatar1.jpg',
+    'Imagenes/Avatar/img_avatar2.jpg',
+    'Imagenes/Avatar/img_avatar3.jpg',
+    'Imagenes/Avatar/img_avatar4.jpg',
+    'Imagenes/Avatar/img_avatar5.jpg'
   ];
   const seleccionados = avatares.sort(() => 0.5 - Math.random()).slice(0, 3);
   const avatarHTML = seleccionados
