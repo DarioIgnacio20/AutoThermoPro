@@ -121,14 +121,13 @@
       <input type="text" class="input" name="direccion" placeholder="Dirección Exacta + Número" required>
       <div id="sugerenciasDireccion"></div>
 
+      <select class="input" name="region" id="region" required>
+        <option value="">Selecciona región</option>
+      </select>
 
-<select class="input" name="region" id="region" required>
-  <option value="">Selecciona región</option>
-</select>
-
-<select class="input" name="comuna" id="comuna" required disabled>
-  <option value="">Selecciona comuna</option>
-</select>
+      <select class="input" name="comuna" id="comuna" required disabled>
+        <option value="">Selecciona comuna</option>
+      </select>
 
       <input type="hidden" name="producto" id="productoHidden">
 
@@ -149,8 +148,7 @@
     let cantidadRecibida = '1';
     let resumenProducto = '';
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGFyaW9pZ2FuY2lvIiwiYSI6ImNtY3F4NzBqeTBsbjcybm9ya2lwZnUxMGkifQ.jxZIRA5M2LN7MAl6Z3XI4w'; // Reemplaza con tu token real
-
+    const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGFyaW9pZ2FuY2lvIiwiYSI6ImNtY3F4NzBqeTBsbjcybm9ya2lwZnUxMGkifQ.jxZIRA5M2LN7MAl6Z3XI4w'; // Reemplaza con tu token real
 
     window.addEventListener('message', function (event) {
       if (event.data && event.data.cantidadSeleccionada) {
@@ -182,164 +180,151 @@ const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGFyaW9pZ2FuY2lvIiwiYSI6ImNtY3F4NzBqeTBsbjcybm9
         actualizarProducto();
       });
 
-function limpiarTextoUbicacion(texto) {
-  return texto
-    .replace(/\(.*?\)/g, '') // Quita "(XII)"
-    .toLowerCase()
-    .trim()
-    .split(' ')
-    .map(p => p.charAt(0).toUpperCase() + p.slice(1))
-    .join(' ');
-}
-
-
-
-// Nuevo: variables para guardar la selección
-let direccionSeleccionada = null;
-
-const inputDireccion = document.querySelector('input[name="direccion"]');
-//inputDireccion.addEventListener('input', buscarSugerenciasDireccion);
-
-async function buscarSugerenciasDireccion() {
-  const direccionParcial = inputDireccion.value.trim();
-  const comuna = document.querySelector('select[name="comuna"]').value;
-  const region = document.querySelector('select[name="region"]').value;
-
-  if (direccionParcial.length < 3 || !comuna || !region) {
-    mostrarSugerencias([]);
-    return;
-  }
-
-  const comunaLimpia = limpiarTextoUbicacion(comuna);
-  const regionLimpia = limpiarTextoUbicacion(region);
-  const textoBusqueda = `${direccionParcial}, ${comunaLimpia}, ${regionLimpia}, Chile`;
-
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(textoBusqueda)}.json?access_token=${MAPBOX_TOKEN}&limit=5&country=CL`;
-
-  try {
-    const resp = await fetch(url);
-    const data = await resp.json();
-    if (data.features) {
-      mostrarSugerencias(data.features);
-    } else {
-      mostrarSugerencias([]);
+    function limpiarTextoUbicacion(texto) {
+      return texto
+        .replace(/\(.*?\)/g, '') // Quita "(XII)"
+        .toLowerCase()
+        .trim()
+        .split(' ')
+        .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+        .join(' ');
     }
-  } catch(e) {
-    console.error('Error al buscar sugerencias:', e);
-    mostrarSugerencias([]);
-  }
-}
 
-function mostrarSugerencias(features) {
-  const contenedor = document.getElementById('sugerenciasDireccion');
-  contenedor.innerHTML = ''; // limpiar
+    // Nuevo: variables para guardar la selección
+    let direccionSeleccionada = null;
 
-  features.forEach(feature => {
-    const item = document.createElement('div');
-    item.textContent = feature.place_name;
-    item.className = 'sugerencia-item';
-    item.onclick = () => {
-      inputDireccion.value = feature.place_name;
-      direccionSeleccionada = feature; // guardamos la selección
-      contenedor.innerHTML = '';
-    };
-    contenedor.appendChild(item);
-  });
-}
+    const inputDireccion = document.querySelector('input[name="direccion"]');
 
-// Estilos para sugerencias (puedes ajustar)
-const estiloSugerencias = document.createElement('style');
-estiloSugerencias.textContent = `
-#sugerenciasDireccion {
-  max-width: 360px;
-  margin: 0 auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: white;
-  position: relative;
-  z-index: 1000;
-  text-align: left;
-}
-.sugerencia-item {
-  padding: 8px;
-  cursor: pointer;
-}
-.sugerencia-item:hover {
-  background: #f0f0f0;
-}
-`;
-document.head.appendChild(estiloSugerencias);
+    async function buscarSugerenciasDireccion() {
+      const direccionParcial = inputDireccion.value.trim();
+      const comuna = document.querySelector('select[name="comuna"]').value;
+      const region = document.querySelector('select[name="region"]').value;
 
-// Submit sin revalidar en Mapbox, confiamos en la selección
-document.getElementById('pedidoForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
+      if (direccionParcial.length < 3 || !comuna || !region) {
+        mostrarSugerencias([]);
+        return;
+      }
 
-  const form = e.target;
-  const nombre = form.querySelector('input[name="nombre"]').value.trim().split(' ')[0] || 'cliente';
+      const comunaLimpia = limpiarTextoUbicacion(comuna);
+      const regionLimpia = limpiarTextoUbicacion(region);
+      const textoBusqueda = `${direccionParcial}, ${comunaLimpia}, ${regionLimpia}, Chile`;
 
- /* if (!direccionSeleccionada) {
-    alert("Debes elegir una dirección de las sugerencias para que sea válida.");
-    return;
-  }*/
+      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(textoBusqueda)}.json?access_token=${MAPBOX_TOKEN}&limit=5&country=CL`;
 
-  const datos = new FormData(form);
-
-  // Opcional: agregar lat/lng si te interesa
-  //datos.append('lat', direccionSeleccionada.center[1]);
-  //datos.append('lng', direccionSeleccionada.center[0]);
-
-  //fetch('https://formspree.io/f/meokwjye', {
-   // method: 'POST',
-    //body: datos,
-    //headers: { 'Accept': 'application/json' }
-  //})
-
-//Envia a mi api
-
-fetch('/api/pedido', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(Object.fromEntries(datos))
-})
-
-
-
-  .then(res => {
-    if (res.ok) {
-      document.getElementById('contenedorPrincipal').style.display = 'none';
-
-      const mensajeFinal = document.getElementById('mensajeFinal');
-      mensajeFinal.innerHTML = `
-        <div class="success-message">
-          <div style="font-size: 32px;">🎉</div>
-          <h3>¡Gracias, ${nombre}!</h3>
-          <p>Tu pedido fue recibido correctamente.</p>
-          <p><strong>${resumenProducto}</strong></p>
-          <p>Nos contactaremos contigo muy pronto para la entrega.</p>
-          <button id="btnCerrarFinal">Cerrar</button>
-        </div>
-      `;
-      mensajeFinal.style.display = 'block';
-
-      document.getElementById('btnCerrarFinal').onclick = () => {
-        window.parent.postMessage('cerrarModal', '*');
-      };
-
-      setTimeout(() => {
-        window.parent.postMessage('cerrarModal', '*');
-      }, 5000);
-    } else {
-      throw new Error("Error al enviar pedido");
+      try {
+        const resp = await fetch(url);
+        const data = await resp.json();
+        if (data.features) {
+          mostrarSugerencias(data.features);
+        } else {
+          mostrarSugerencias([]);
+        }
+      } catch (e) {
+        console.error('Error al buscar sugerencias:', e);
+        mostrarSugerencias([]);
+      }
     }
-  })
-  .catch(error => {
-    alert("Hubo un error al enviar el pedido. Intenta nuevamente.");
-    console.error(error);
-  });
-});
 
+    function mostrarSugerencias(features) {
+      const contenedor = document.getElementById('sugerenciasDireccion');
+      contenedor.innerHTML = ''; // limpiar
 
+      features.forEach(feature => {
+        const item = document.createElement('div');
+        item.textContent = feature.place_name;
+        item.className = 'sugerencia-item';
+        item.onclick = () => {
+          inputDireccion.value = feature.place_name;
+          direccionSeleccionada = feature; // guardamos la selección
+          contenedor.innerHTML = '';
+        };
+        contenedor.appendChild(item);
+      });
+    }
 
+    // Estilos para sugerencias (puedes ajustar)
+    const estiloSugerencias = document.createElement('style');
+    estiloSugerencias.textContent = `
+    #sugerenciasDireccion {
+      max-width: 360px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: white;
+      position: relative;
+      z-index: 1000;
+      text-align: left;
+    }
+    .sugerencia-item {
+      padding: 8px;
+      cursor: pointer;
+    }
+    .sugerencia-item:hover {
+      background: #f0f0f0;
+    }
+    `;
+    document.head.appendChild(estiloSugerencias);
+
+    // Submit sin revalidar en Mapbox, confiamos en la selección
+    document.getElementById('pedidoForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const submitButton = form.querySelector('.btn-pedido'); // Obtiene el botón de envío
+      const nombre = form.querySelector('input[name="nombre"]').value.trim().split(' ')[0] || 'cliente';
+
+      // Deshabilitar el botón mientras se procesa el pedido
+      submitButton.disabled = true;
+      submitButton.innerText = 'Enviando...'; // Cambia el texto del botón a "Enviando..."
+
+      const datos = new FormData(form);
+
+      // Envia a la API
+      fetch('/api/pedido', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(datos))
+      })
+      .then(res => {
+        if (res.ok) {
+          // Ocultar formulario
+          document.getElementById('contenedorPrincipal').style.display = 'none';
+
+          const mensajeFinal = document.getElementById('mensajeFinal');
+          mensajeFinal.innerHTML = `
+            <div class="success-message">
+              <div style="font-size: 32px;">🎉</div>
+              <h3>¡Gracias, ${nombre}!</h3>
+              <p>Tu pedido fue recibido correctamente.</p>
+              <p><strong>${resumenProducto}</strong></p>
+              <p>Nos contactaremos contigo muy pronto para la entrega.</p>
+              <button id="btnCerrarFinal">Cerrar</button>
+            </div>
+          `;
+          mensajeFinal.style.display = 'block';
+
+          document.getElementById('btnCerrarFinal').onclick = () => {
+            window.parent.postMessage('cerrarModal', '*');
+          };
+
+          // Deshabilitar el botón y mostrar el mensaje de éxito
+          setTimeout(() => {
+            window.parent.postMessage('cerrarModal', '*');
+          }, 5000);
+        } else {
+          throw new Error("Error al enviar pedido");
+        }
+      })
+      .catch(error => {
+        alert("Hubo un error al enviar el pedido. Intenta nuevamente.");
+        console.error(error);
+      })
+      .finally(() => {
+        // Rehabilitar el botón después de enviar
+        submitButton.disabled = false;
+        submitButton.innerText = 'Realizar Pedido'; // Vuelve el texto del botón a "Realizar Pedido"
+      });
+    });
   </script>
 
 <script src="regiones_comunas.js"></script>
