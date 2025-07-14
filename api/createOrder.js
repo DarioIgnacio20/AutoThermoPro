@@ -9,20 +9,21 @@ module.exports = async (req, res) => {
   try {
     const params = {
       apiKey,
+      commerceOrder: Math.floor(Math.random() * 100000),
       subject: "Compra de ejemplo",
       currency: "CLP",
       amount: 1000,
       email: "cliente@example.com",
       urlReturn: "https://auto-thermo-pro.vercel.app/confirmacion",
       urlConfirmation: "https://auto-thermo-pro.vercel.app/api/flowWebhook",
+      paymentMethod: 9,    // WebPay por ejemplo
       s: "1"
     };
 
-    // Flow requiere que firmes todos los parámetros (ordenados alfabéticamente)
+    // Generar firma según Flow
     const sortedKeys = Object.keys(params).sort();
     const concatenated = sortedKeys.map(key => `${key}${params[key]}`).join('');
 
-    // HMAC-SHA256 usando secretKey
     const sign = crypto.createHmac('sha256', secretKey)
                        .update(concatenated)
                        .digest('hex');
@@ -33,9 +34,12 @@ module.exports = async (req, res) => {
       headers: { "Content-Type": "application/json" }
     });
 
-    if (response.data && response.data.url) {
-      return res.status(200).json({ url: response.data.url });
+    if (response.data && response.data.token && response.data.url) {
+      // Flow devuelve token y url. Armamos la url final
+      const paymentUrl = `${response.data.url}?token=${response.data.token}`;
+      return res.status(200).json({ url: paymentUrl });
     } else {
+      console.error("Respuesta incompleta de Flow:", response.data);
       return res.status(500).json({ error: "No se pudo crear la orden" });
     }
   } catch (error) {
