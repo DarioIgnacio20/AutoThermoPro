@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
       subject: "Compra de ejemplo",
       currency: "CLP",
       amount: 1000,
-      email: "cliente@example.com",
+      email: "dariocarvajalsepulveda@gmail.com",
       paymentMethod: 9,
       urlReturn: "https://auto-thermo-pro.vercel.app/confirmacion",
       urlConfirmation: "https://auto-thermo-pro.vercel.app/api/flowWebhook"
