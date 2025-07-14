@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cepillo de Limpieza Vidrios Empañados</title>
+  <title>Producto</title>
   <link rel="stylesheet" href="style.css">
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
@@ -57,7 +57,7 @@
   </header>
 
   <div style="text-align:center; margin: 20px 0;">
-    <img src="Imagenes/Logo/logo.png" alt="Alivia Chile" style="height:50px;">
+    <img src="Imagenes/Logo/logo.png" alt="El Senor de la Tendencia" style="height:50px;">
   </div>
 
 
@@ -81,8 +81,8 @@
   </div>
 </div>
     <div class="product-details">
-      <p class="rating" id="reseñasProducto"></p>
       <h1 id="tituloProducto"></h1>
+      <p class="rating" id="reseñasProducto"></p>
 
 
 
@@ -93,13 +93,25 @@
       <div>
 <p id="stockLimitado" style="color: red; font-weight: bold;"></p>
 
-        <span class="price" id="precioActual"></span>
-        <span class="old-price" id="precioAnterior"></span>
+  <span class="price" id="precioActual"></span>
+  <span class="old-price" id="precioAnterior"></span>
+</div>
+
 <div id="cantidadOpciones" style="margin: 15px 0;"></div>
-        <span style="color:#00bcd4; font-weight:bold; margin-left:10px;" id="porcentajeDescuento"></span>
-        <div id="personasViendo" class="personas-viendo"></div>
-      </div>
-      <p id="cantidadProducto"></p>
+
+<!-- NUEVO contenedor que evita saltos -->
+<div style="width: 100%;">
+  <span id="porcentajeDescuento" style="color:#00bcd4; font-weight:bold; display: block; margin-bottom: 6px;"></span>
+  <div id="personasViendo" class="personas-viendo" style="display: block;"></div>
+</div>
+
+<p id="cantidadProducto"></p>
+
+  <!-- 🔥 AQUÍ AGREGAS TU BOTÓN -->
+  <button id="botonPagar" style="background-color:#e74c3c; color:white; font-size:18px; padding:10px 20px; border:none; border-radius:8px; cursor:pointer; margin-top:20px;">
+    Comprar ahora
+  </button>
+
     </div>
   </div>
 
@@ -119,6 +131,7 @@
 
 <div class="section-title">Comentarios Reales</div>
 <div id="comentarios-container" class="comentarios-grid"></div>
+<div class="espaciador-barra-flotante"></div>
 
 
 
@@ -150,6 +163,27 @@
 <script src="puntos.js"></script>
 <script src="encabezado.js"></script>
 <script src="seguridadcompra.js"></script>
+<script src="barra-flotante.js"></script>
+
+
+<script>
+  document.getElementById('botonPagar').addEventListener('click', async () => {
+    try {
+      // Llama a tu backend en Vercel
+      const response = await fetch('/api/createOrder');
+      const data = await response.json();
+      if (data.url) {
+        // Redirige al usuario a Flow
+        window.location.href = data.url;
+      } else {
+        alert('No se pudo crear la orden de pago');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error al procesar el pago');
+    }
+  });
+</script>
 
 
 </body>
