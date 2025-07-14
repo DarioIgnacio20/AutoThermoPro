@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       subject: item.description,
       currency: "CLP",
       amount: item.price,
-      email: "cliente@email.com",  // puedes poner genérico si no tienes el real
+      email: "dariocarvajalsepulveda@gmail.com",  // puedes poner genérico si no tienes el real
       paymentMethod: 9,
       urlConfirmation: "https://auto-thermo-pro.vercel.app/api/flowWebhook",
       urlReturn: "https://auto-thermo-pro.vercel.app/confirmacion"
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
 
     // Llamar API Flow
     const response = await axios.post(
-      "https://sandbox.flow.cl/api/payment/create",
+      "https://www.flow.cl/api/payment/create",
       qs.stringify(data),
       { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
     );
