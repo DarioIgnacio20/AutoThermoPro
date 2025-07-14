@@ -8,7 +8,7 @@ module.exports = async function handler(req, res) {
     const { producto } = req.query;
 
     const catalogo = {
-      locker1: { description: "Locker Producto A", price: 9990 },
+      locker1: { description: "Locker Producto A", price: 400 },
       locker2: { description: "Locker Producto B", price: 12990 },
     };
 
