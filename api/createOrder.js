@@ -5,7 +5,7 @@ const qs = require("qs"); // Para enviar datos como x-www-form-urlencoded
 module.exports = async (req, res) => {
   const apiKey = "35CF733F-8EF6-4B6E-BD72-592E8L5ACD6C";
   const secretKey = "5c20ed3b2f8e4d973e876788a4a1ebc535721070";
-  const flowApiUrl = "https://sandbox.flow.cl/api/payment/create";
+  const flowApiUrl = "https://www.flow.cl/api/payment/create";
 
   try {
     const params = {
